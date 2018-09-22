@@ -44,6 +44,24 @@ http.createServer((req, res) => {
       // 如果指定了 data，则相当于调用 response.write(data, encoding) 之后再调用 response.end(callback)
       res.end(data);
     });
+  } else if(req.url === '/images/bg7.jpeg') {
+    fs.readFile(path.join(__dirname, 'images', 'bg7.jpeg'), (err,data) => {
+      if(err) {
+        throw err
+      }
+      // 读取图片文件定义content-type
+      // res.setHeader('Content-Type', 'images/png');
+      res.end(data);
+    });
+  } else if(req.url === '/style/main.css') {
+    fs.readFile(path.join(__dirname, 'style', 'main.css'), (err,data) => {
+      if(err) {
+        throw err
+      }
+      // 读取图片文件定义content-type
+      res.setHeader('Content-Type', 'text/css');
+      res.end(data);
+    });
   } else {
     fs.readFile(path.join(__dirname, 'html', '404.html'), (err,data) => {
       if(err) {
