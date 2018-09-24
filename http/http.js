@@ -2,7 +2,7 @@
 const http = require('http');
 
 // 创建http服务对象
-let server = http.createServer();
+const server = http.createServer();
 
 // 监听用户的请求事件（request事件）
 server.on('request', (req, res) => {
